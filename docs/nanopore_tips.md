@@ -97,13 +97,23 @@ Wash Kitを使うことでフローセルを再利用可能。植物の場合は
 
 ### ベースコール
 計算が速いものの正確性に欠けるFast Basecallと、計算が遅いものの正確性の高いAccurate Basecallがある。前者は（設定をいじらなければ）シーケンスする際に出力されるfastqで、後者はfast5形式の出力から自分で計算させる。主なものにGuppyとBonitoがある。Bonitoはディープラーニングによるベースコーラーで、自前のデータでトレーニングすればGuppyよりやや良い結果が出るらしい（未利用）。以下Guppyについて基本的な利用法を記述する。<br>
-guppyに入力するファイルはfast5形式のものを1フォルダにまとめておき`--input_path`でそのフォルダを指定する。`--save_path`にguppyによりベースコールされたfastqファイルが保存される。`--flowcell`と`--kit`は自分の実験に使ったものを指定。GPUを利用する場合は、`-x cuda:0`を指定（GPUが1台の場合）。RAMやGPUの容量によってはデフォルトで動かすと途中で止まってしまうので、`--num_callers 1 --gpu_runners_per_device 1 --chuncks_per_runner 1`などで一度に動かすコーラーを制限する（1は最低値なので適宜変える）。<br>
+guppyに入力するファイルはfast5形式のものを1フォルダにまとめておき`--input_path`でそのフォルダを指定する。`--save_path`にguppyによりベースコールされたfastqファイルが保存される。出力された配列の質に応じて/passと/failのフォルダに振り分けられる。振り分けの基準は自分で設定できるが、基本的にデフォルトで問題ない。<br>`--flowcell`と`--kit`は自分の実験に使ったものを指定。GPUを利用する場合は、`-x cuda:0`を指定（GPUが1台の場合）。RAMやGPUの容量によってはデフォルトで動かすと途中で止まってしまうので、`--num_callers 1 --gpu_runners_per_device 1 --chuncks_per_runner 1`などで一度に動かすコーラーを制限する（1は最低値なので適宜変える）。<br>
 GPUを利用してベースコール場合は、例えば次のように指定する。
 ```
-guppy_basecaller --input_path INPUT_FOLDER --save_path OUTPUT_FOLDER --flowcell FLO-MIN106 --kit SQK-LSK109 -x cuda:0 --num_callers 1 --gpu_runners_per_device 1 --chuncks_per_runner 1
+guppy_basecaller --input_path INPUT_FOLDER --save_path OUTPUT_FOLDER \
+  --flowcell FLO-MIN106 --kit SQK-LSK109 \
+  -x cuda:0 --num_callers 1 --gpu_runners_per_device 1 --chuncks_per_runner 1
 ```
-画面に進行具合やエラーメッセージが出力されるので、時々チェックする。長い配列ほどメモリを食うようなので、どうしてもエラーで止まってしまうようなら、とりあえずエラーの原因になったファイル以外をベースコールしてしまうのもあり。
-
+画面に進行具合やエラーメッセージが出力されるので、時々チェックする。長い配列ほどメモリを食うようなので、どうしてもエラーで止まってしまうようなら、とりあえずエラーの原因になったファイル以外をベースコールしてしまうのもあり。<br>
+ベースコールが終わったら、passに出力されたfastqファイルを1ファイルにまとめてgunzipで圧縮する。例えば、
+```
+cd OUTPUT_FOLDER/pass
+cat *.fastq | gunzip > guppy.fq.gz
+```
+など。guppy.fq.gzをアセンブルに利用する。アセンブラによっては圧縮ファイルを受け付けないので注意（ふつうは受け付ける）。あとで配列を追加する場合、複数のfq.gzファイルを`cat`でつないで良い（いちいちgunzipを展開しなくてOK）。例えば、
+```
+cat guppy_1.fq.gz guppy_2.fq.gz > guppy_cat.fq.gz
+```
 
 ### アセンブル
 アセンブルは総当たりで計算されるため、一般にメモリの使用量や、中間ファイルのサイズがデカいことが多い。さまざまなアセンブルソフトが出ているため、いろいろ試して自分のデータに合ったソフトを探すこと。Nanoporeはエラーが多いロングリードを出力するため、対応したソフトは限られる。まずはメモリ使用量の少ないFlye、速いが中間ファイルの出力が多いCanu、正確だが使いにくいなNECATあたりをとりあえず動かすのがいいと思う。以下、Flyeについて基本的な利用法を記述する。<br>
