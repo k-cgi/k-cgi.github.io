@@ -7,6 +7,7 @@ WSL2でGPGPU
 <br>
 ## ゲノム関連
 [Nanopore関連のTips](docs/nanopore_tips.md)
+[ゲノムアセンブラいろいろ](docs/assembler.md)
 ## ゲノム解析関連
 a
 <br>
