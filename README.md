@@ -2,8 +2,8 @@
 今までやった解析等の備忘録です。一部研究室用に作成したものを含む。
 <br>
 ## Linux関連
-[Linuxで文字列操作(]docs/test.md)<br><br>
-[Linuxでデータ整形](docs/test.md)<br><br>
+[Linuxで文字列操作(]docs/test.md)<br>
+[Linuxでデータ整形](docs/test.md)<br>
 [WSL2でGPGPU](docs/test.md)<br>
 <br>
 ## ゲノム・遺伝子関連
