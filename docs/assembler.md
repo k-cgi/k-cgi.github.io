@@ -12,10 +12,14 @@
 なるべくエラー率が低く、長い配列を入れるとうまくいきやすい。
 
 ## Flye
-正確性がやや劣るが、使用メモリが少なく、中間ファイルも少ないためスパコン上で動かすのに最適。
+正確性がやや劣るが、使用メモリが少なく、中間ファイルも少ないためスパコン上で動かすのに最適。4つの計算過程がある。標準出力に各過程での消費メモリが出力されるので、途中でメモリが不足する時などは参考にする。
 
 ```
-flye 
+singularity exec /usr/local/biotools/f/flye-BUILD_NUM flye --nano-raw INPUT.fq.gz --out-dir OUT_DIR --threads NUM_THREADS
+```
+再開する場合は、入出ディレクトリ、中間ファイルを変更せずに`--resume`を付けて再実行すればいい。
+```
+singularity exec /usr/local/biotools/f/flye-BUILD_NUM flye --nano-raw INPUT.fq.gz --out-dir OUT_DIR --threads NUM_THREADS --resume
 ```
 
 ## Canu
@@ -37,6 +41,7 @@ singularity exec  /usr/local/biotools/a/abyss:2.3.3--hd403d74_1 abyss-pe name=SA
 #qsub -l medium -l s_vmem=120G -l mem_req=120G JOBNAMEで実行
 
 ```
+再開する場合は、入出ディレクトリ、中間ファイルを変更せずに同じコマンドを再実行すればいい。
 
 ### SPADes
 スパコン上で動作はするものの、数Gbpを超えるゲノムはアセンブルできない。
