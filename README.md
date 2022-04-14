@@ -24,7 +24,7 @@
 1. [祖先形質推定](docs/ancestor.md)
 
 ## ウェブスクレイピング
-1. [RパッケージRvestを用いたwebスクレイピング](docs/test.md)
+1. [RパッケージRvestを用いたwebスクレイピング](docs/scraping_r.md)
 1. [pythonを用いたwebスクレイピング](docs/test.md)
 
 ## その他
