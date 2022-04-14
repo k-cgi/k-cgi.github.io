@@ -4,7 +4,7 @@
 
 ## 一般論
 - インプットデータは多い方が良いが、質の悪いデータは捨てたほうが良い。（例：naoporeからの3000Kbp以下のリード、Q score 30以下のショートリードなど）
-- アセンブラのパラメータはいろいろ工夫してみる。（例：K-merを増やす、必要カバレッジを下げる）
+- アセンブラのパラメータはいろいろ工夫してみる。（例：K-merを増やす、必要カバレッジを下げる、圧縮された入力ファイルを展開してみる）
 - 1つのアセンブラでうまくいかなくても、新しいバージョンや他のアセンブラを試す。
 
 ## ロングリード用
@@ -21,6 +21,16 @@ singularity exec /usr/local/biotools/f/flye-BUILD_NUM flye --nano-raw INPUT.fq.g
 ```
 singularity exec /usr/local/biotools/f/flye-BUILD_NUM flye --nano-raw INPUT.fq.gz --out-dir OUT_DIR --threads NUM_THREADS --resume
 ```
+
+-pe def_slot 20 -l medium -l s_vmem=600G -l mem_req=30G
+
+なお、350Gbp分のNanoporeリードを入力として利用した場合、第一段階の計算に20日かかったうえ、エラーがでてアセンブルできなかった。
+```
+flye --nano-raw INPUT.fa.gz --genome-size 3.5g --out-dir OUT_DIR --threads 40
+#qsub -pe def_slot 40 -l medium -l s_vmem=640G -l d_rt=1440:00:00 -l s_rt=1440:00:00
+```
+
+
 
 ## Canu
 正確性が高いとされる。スパコンで動かすことはできたが、中間ファイルが数TBにのぼるため、遺伝研スパコン上でアセンブルを完了することはできなかった。
