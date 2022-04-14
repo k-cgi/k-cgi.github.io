@@ -13,6 +13,12 @@
 1. [ゲノム関連の各種ファイルの扱い方](docs/test.md)
 1. [ゲノム関連の便利ツール](docs/test.md)
 
+## 系統解析
+1. [PCR]()
+1. [系統樹の書き方（NJ法、ML法、Base法）](docs/test.md)
+1. [PACo（系統樹間の不一致検出）](docs/test.md)
+1. [祖先形質推定](docs/test.md)
+
 ## ウェブスクレイピング
 1. [RパッケージRvestを用いたwebスクレイピング](docs/test.md)
 1. [pythonを用いたwebスクレイピング](docs/test.md)
