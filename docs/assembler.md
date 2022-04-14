@@ -13,7 +13,7 @@
 - [ロング・ショート混合用](#ロングショート混合用)
   - [Platanus2](#platanus2) 
 - [オルガネラ用](#オルガネラ用)
-  -[GetOrganelle](#getorganelle) 
+  - [GetOrganelle](#getorganelle) 
 
 ## 一般論
 - インプットデータは多い方が良いが、質の悪いデータは捨てたほうが良い。（例：naoporeからの3000Kbp以下のリード、Q score 30以下のショートリードなど）
@@ -88,12 +88,16 @@ singularity exec  /usr/local/biotools/a/abyss:2.3.3--hd403d74_1 abyss-pe name=SA
 ショートリードを入力して、オルガネラゲノムのみを再現するためのアセンブラ。
 
 ### GetOrganelle
-分類群を指定して、葉緑体やミトコンドリアのゲノムを再現することができる。インプットにはショートリードが必要。葉から抽出したDNAに由来するサンプルから10Gbp程度入力したところ、葉緑体ゲノムが上手く再現された。ただし、アノテーションは正確性が低いらしいので、アノテーションは手動でやった方がいいらしい。
-
-
+分類群を指定して、葉緑体やミトコンドリアのゲノムを再現することができる。インプットにはショートリードが必要。葉から抽出したDNAに由来するサンプルから10Gbp程度入力したところ、葉緑体ゲノムが上手く再現された。ただし、アノテーションは正確性が低いらしいので、アノテーションは手動でやった方がいいらしい。<br>
+まず、get_organelle_config.pyでデータベースを採ってきてから、それを基準にget_organelle_from_reads.pyでゲノムを再現する。以下のコマンドで植物の葉緑体ゲノムを再現することが可能。
 ```
+python3 get_organelle_config.py -a embplant_pt 
 python3 get_organelle_from_reads.py -t NUM_THREAD -1 ILUMINA_PE1.fq.gz -2 ILUMINA_PE2.fq.gz -o OUT_DIR -R 15 -k 21,55,85,115 -F embplant_pt
-
+```
+植物ミトコンドリア以外をアセンブルする場合、get_organelle_config.pyの`-a`と、get_organelle_from_reads.pyの`-F`を変更する。
+スパコン上で植物のデータから葉緑体ゲノムを再現した場合、次のオプションで2時間強で計算が完了した。
+```
+qsub -pe def_slot 4 -l medium -l s_vmem=60G　getorganelle_nagi
 ```
 
 #### 出力ファイル
