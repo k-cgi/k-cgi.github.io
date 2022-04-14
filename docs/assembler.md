@@ -40,7 +40,7 @@ flye --nano-raw INPUT.fq.gz --out-dir OUT_DIR --threads 30
 なお、350Gbp分のNanoporeリードを入力として利用した場合、第一段階の計算に20日かかったうえ、エラーがでてアセンブルできなかった。
 ```
 flye --nano-raw INPUT.fa.gz --genome-size 3.5g --out-dir OUT_DIR --threads 40
-#qsub -pe def_slot 40 -l medium -l s_vmem=640G -l d_rt=1440:00:00 -l s_rt=1440:00:00
+#qsub -pe def_slot 40 -l medium -l s_vmem=640G -l d_rt=1440:00:00 -l s_rt=1440:00:00 JOBNAME
 ```
 
 ### 出力ファイル
@@ -66,7 +66,7 @@ k-merやHの値に検討の余地がある。スパコンでの実行例は以�
 singularity exec  /usr/local/biotools/a/abyss:2.3.3--hd403d74_1 abyss-pe name=SAMPLE_NAME k=64 \
     in="ILUMINA_PE1.fq.gz ILUMINA_PE2.fq.gz" B=60G H=3 kc=3 v=-v
 
-#qsub -l medium -l s_vmem=120G -l mem_req=120G JOBNAMEで実行
+#qsub -l medium -l s_vmem=120G -l mem_req=120G JOBNAME
 ```
 再開する場合は、入出ディレクトリ、中間ファイルを変更せずに同じコマンドを再実行すればいい。
 
