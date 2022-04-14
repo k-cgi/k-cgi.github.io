@@ -8,7 +8,7 @@
 
 ## ゲノム・遺伝子関連
 1. [Nanopore関連のTips](docs/nanopore_tips.md)
-2. [入力データのクオリティチェック](docs/qualitycheck.md
+2. [入力データのクオリティチェック](docs/qualitycheck.md)
 3. [ゲノムアセンブラいろいろ](docs/assembler.md)
 4. [マッピング(RNA/DNA)](docs/test.md)
 5. [バリアントコール](docs/test.md)
