@@ -8,10 +8,11 @@
 
 ## ゲノム・遺伝子関連
 1. [Nanopore関連のTips](docs/nanopore_tips.md)
-1. [ゲノムアセンブラいろいろ](docs/assembler.md)
-1. [マッピング(RNA/DNA)](docs/test.md)
-1. [ゲノム関連の各種ファイルの扱い方](docs/test.md)
-1. [ゲノム関連の便利ツール](docs/test.md)
+2. [入力データのクオリティチェック](docs/test.md)
+3. [ゲノムアセンブラいろいろ](docs/assembler.md)
+4. [マッピング(RNA/DNA)](docs/test.md)
+5. [ゲノム関連の各種ファイルの扱い方](docs/test.md)
+6. [ゲノム関連の便利ツール](docs/test.md)
 
 ## 系統解析
 1. [PCR](docs/test.md)
