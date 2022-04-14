@@ -7,6 +7,7 @@
   - [Flye](#flye)
   - [Canu](#canu)
   - [NECAT](#necat)
+  - [NextDenovo](#nextdenovo)
 - [ショートリード用](#ショートリード用)
   - [Abyss2](#abyss2)
   - [SPAdes](#spades)
@@ -57,7 +58,7 @@ flye --nano-raw INPUT.fa.gz --genome-size 3.5g --out-dir OUT_DIR --threads 40
 スパコンで動かすことはできたが、メモリ不足(メモリ200G指定)でアセンブルは完了できなかった。
 
 ### NextDenovo
-コンフィグファイル（config.cfg）に必要な情報を書き込み、次のコマンドで実行
+コンフィグファイル（config.cfg）にインプットファイルや各種パラメーターなど必要な情報を書き込み、次のコマンドで実行
 ```
 nextDenovo config.cfg
 ```
