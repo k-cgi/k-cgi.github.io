@@ -56,7 +56,6 @@ singularity exec  /usr/local/biotools/a/abyss:2.3.3--hd403d74_1 abyss-pe name=SA
     in="ILUMINA_PE1.fq.gz ILUMINA_PE2.fq.gz" B=60G H=3 kc=3 v=-v
 
 #qsub -l medium -l s_vmem=120G -l mem_req=120G JOBNAMEで実行
-
 ```
 再開する場合は、入出ディレクトリ、中間ファイルを変更せずに同じコマンドを再実行すればいい。
 
