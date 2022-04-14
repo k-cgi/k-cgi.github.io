@@ -14,7 +14,7 @@
 1. [ゲノム関連の便利ツール](docs/test.md)
 
 ## 系統解析
-1. [PCR]()
+1. [PCR](docs/test.md)
 1. [系統樹の書き方（NJ法、ML法、Base法）](docs/test.md)
 1. [PACo（系統樹間の不一致検出）](docs/test.md)
 1. [祖先形質推定](docs/test.md)
