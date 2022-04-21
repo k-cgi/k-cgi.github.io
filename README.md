@@ -11,9 +11,9 @@
 2. [入力データのクオリティチェック](docs/qualitycheck.md)
 3. [ゲノムアセンブラいろいろ](docs/assembler.md)
 4. [マッピング(RNA/DNA)](docs/mapping.md)
-5. [バリアントコール](docs/test.md)
-6. [ゲノム関連の各種ファイルの扱い方](docs/test.md)
-7. [ゲノム関連の便利ツール](docs/test.md)
+5. [バリアントコール](docs/variantcall.md)
+6. [ゲノム関連の各種ファイルの扱い方](docs/fextention.md)
+7. [ゲノム関連の便利ツール](docs/gtools.md)
 8. [RNA関連の解析](docs/rna.md)
 
 ## 系統解析
