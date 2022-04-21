@@ -4,6 +4,7 @@
 ## .sam, .bam, .bai
 ## .fastq (.faq, .fq)
 ## .vcf, .bcf
+## .bed
 
 ## 圧縮関連
 ### .zip
