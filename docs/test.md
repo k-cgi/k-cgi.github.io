@@ -1,9 +1,9 @@
 # バリアントコール
 
-- [Deep Variant](#deep_variant)
--  [入力ファイル](#入力ファイル)
--  [実行](#実行)
--  [出力結果](#出力結果)
+- [Deep Variant](#deep-variant)
+    - [入力ファイル](#入力ファイル)
+    - [実行](#実行)
+   - [出力結果](#出力結果)
 - [GATK](#gatk)
 ## Deep Variant
 ### 入力ファイル
