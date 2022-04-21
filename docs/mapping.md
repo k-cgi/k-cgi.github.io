@@ -4,6 +4,8 @@
 - [BWA](#bwa)
 - [Minimap2](#minimap2)
 - [STAR](#star)
+- [Bowtie2](#bowtie2)
 ## BWA
 ## Minimap2
 ## STAR
+## Bowtie2
