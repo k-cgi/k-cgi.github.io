@@ -13,7 +13,9 @@
 - 上記bamファイルのインデックス(.bai)
 
 faiファイルは<br>
-`samtools faidx INPUT_GENOME.fasta`<br>
+```
+samtools faidx INPUT_GENOME.fasta
+```
 で作成される。<br>
 baiファイルを作るにはまずbamファイルをソートする必要がある。<br>
 ```
