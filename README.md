@@ -25,6 +25,6 @@
 
 ## ウェブスクレイピング
 1. [RパッケージRvestを用いたwebスクレイピング](docs/scraping_r.md)
-1. [pythonを用いたwebスクレイピング](docs/scraping_r.md)
+1. [pythonを用いたwebスクレイピング](docs/scraping_python.md)
 
 ## その他
