@@ -1,10 +1,17 @@
 # ゲノム関連の各種ファイルの扱い方
 
-## .fasta (.fas, .fa)
+## .fasta (.fas, .fa), fai
 ## .sam, .bam, .bai
 ## .fastq (.faq, .fq)
 ## .vcf, .bcf
 ## .bed
+ゲノム上の座標情報をタブ区切りで示したファイル。最低で3行の情報が必要。<br>
+```
+Chr_1 1 14
+Chr_2 30  200
+...
+CHR_NUM START END
+```
 
 ## 圧縮関連
 ### .zip
