@@ -12,8 +12,10 @@
 ```
 #圧縮
 zip OUTPUT.zip INPUT
+
 #フォルダの圧縮
 zip -r OUTPUT.zip INPUT_DIR
+
 #展開
 unzip INPUT.zip
 ```
@@ -23,8 +25,10 @@ unzip INPUT.zip
 ```
 #圧縮
 gzip INPUT #CPU_NUM個のCPUを使って圧縮、元のファイルは無くなる
+
 #フォルダの圧縮
 gzip -r INPUT_DIR
+
 #展開・どっちでもOK
 gzip -d INPUT.gz
 gunzip INPUT.gz
@@ -35,15 +39,24 @@ gunzip INPUT.gz
 #圧縮
 pigz -p CPU_NUM INPUT #CPU_NUM個のCPUを使って圧縮、元のファイルは無くなる
 pigz -c -p CPU_NUM INPUT > OUTPUT.gz #CPU_NUM個のCPUを使って圧縮、元のファイルは残り、OUTPUT.gzが出力される。
+
 #展開
 unpigz -p CPU_NUM INPUT.gz
 
 #フォルダの場合・圧縮
 tar -c INPUT_DIR | pigz -p CPU_NUM > OUTPUT.tar.gz
+
 #フォルダの場合・解凍
-tar -xzf
+tar -zxf INPUT.tar.gz
 ```
 スパコンで実行する場合、shortに10-15コア程度要求すると速くて便利。ただし、shortは1時間しか実行できないので、必ず圧縮・解凍が中断されていないかを確認する。
 
 ### .bgzip
 タブ区切りの生物学的データフォーマットに対応（特化？）した圧縮形式。あまり使うことはないが、一部のツールで要求される。samtools、tabixなどで圧縮可能。
+
+### .tar
+フォルダを1つのファイルとして「固めた」もの。`-v`オプションを付けると圧縮・展開中のファイル名が表示される。
+```
+tar -cf OUTPUT.tar INPUT_DIR
+tar -xf INPUT.tar
+```
