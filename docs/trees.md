@@ -9,4 +9,4 @@
 ### MrBayes
 ### BEAST2
 ## その他の手法
-## MP法
+### MP法
