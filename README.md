@@ -24,8 +24,6 @@
 1. [PACo（系統樹間の不一致検出）](docs/paco.md)
 1. [祖先形質推定](docs/ancestor.md)
 
-## ウェブスクレイピング
+## その他
 1. [RパッケージRvestを用いたwebスクレイピング](docs/scraping_r.md)
 1. [pythonを用いたwebスクレイピング](docs/scraping_python.md)
-
-## その他
