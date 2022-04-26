@@ -9,8 +9,20 @@ ATCGGCCATCAA
 >sample_2_protein
 CKNJJATCA-WQR*
 ```
-MEGA等で開けるが、簡単な確認ならテキストエディタで十分。
+MEGA等で開けるが、簡単な確認ならテキストエディタで十分。<br>
+配列数は対応するソフトで確認するか、>の個数を数えればよい。
 ## .fastq (.faq, .fq)
+シーケンサから出力される、塩基配列情報とその配列の確からしさの情報が付与されたファイル。@から始まる配列名等の情報、塩基配列、その配列のクオリティがセットになっている。次世代シーケンサからの出力の場合、配列名等の情報にはシーケンサの型番やフローセル情報、アダプター配列情報などが付与されている。
+```
+@A00920:484:HK352DSXY:1:1101:1398:1000 2:N:0:GTGCAGTA+GACTTCAC
+CACATAATAATTCATTATTAATAATAATTAACTATATTAAAA
++
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+@A00920:484:HK352DSXY:1:1101:1543:1000 2:N:0:GTGCAGTA+GACTTCAC
+CACATAATAATTCATTATTAATAATAATTAACTATATTAAAA
++
+FFFFFFFFFFF:FFFFFFFFF,FFFFFFFFFFFFFFFFFFFF
+```
 ## .nexsus (.nex)
 DNAやアミノ酸の配列を扱う際の形式。.fastaより多くの情報を付与できる。ファイル先頭に#NEXUS、beginで始まりendで終わる多数のブロックで構成される。最低でもtaxaとcharactersブロックが必要。BEASTやMrBaiseといった系統解析ソフトで必須のファイル形式。
 
@@ -30,9 +42,9 @@ begin characters;
        matrix
 
 Sequence_1
-ATCGAA--
+ATCGAA---ATCTTAATCAT
 Sequence_2
-CGATTA
+CGATTAATCATCTTAATCAT
 
 ;
 end;
@@ -43,7 +55,7 @@ MEGA等で開けるが、対応していないブロックがあるのでテキ�
 ```
 ((A:1,B:1.2):0.2[100],C:2.4)
 ```
-MEGA等で開けるが、テキストエディタで編集することもできる。
+MEGA、FigTree等で開けるが、テキストエディタで編集することもできる。対応するソフトで開けば系統樹の形が表示される。<br>
 
 ## .ab1
 サンガーシーケンサから出力される、蛍光の強度と塩基データを含むファイル。サンガ―シーケンスはこれを見ながら結果の解釈をする。<br>
@@ -54,8 +66,18 @@ MEGA、Gene Studio等で開ける。
 samファイルは可読性のあるファイルだが、ファイルサイズが大きい。bamファイルは可読性はない（バイナリファイル）だが、ファイルサイズが小さく、ソフトウェアのアクセス効率が良い。baiファイルはbamファイルへのアクセス効率を高めるためのインデックスファイル。samとbamは同値であり、samtoolsを利用すれば相互に変換可能。基本的にbamファイルの利用頻度のほうが高いので、bamファイルで保存しておき、必要に応じてsamファイルに変換するのが良いだろう。
 
 ## .vcf, .bcf
-リファレンス配列と注目してる配列の違いのみを記述したファイル
-
+リファレンス配列と注目してる配列の違いのみを記述したファイル。vcfのバイナリ版がbcf。基本的にbcfのほうがファイルサイズが小さいが、可読性が無い。<br>
+以下の例のように、ヘッダ部分に##で始まるファイル構造に関する情報が並び、その後タブ区切りにバリアント情報が並ぶ。vcfを出力したソフトによりヘッダ部分の構造は変わる。
+```
+##fileformat=VCFv4.2
+##FILTER=<ID=PASS,...>
+.
+.
+Chr_1  33244  .      A      T      PASS
+Chr_1  33254  .      G      A      PASS
+Chr_2  3419   .      C      AT     RefCall
+Chr_2  67746  .      GA     G      PASS
+```
 ## .bed
 ゲノム上の座標情報をタブ区切りで示したファイル。最低でも3行（配列名、開始位置、終了位置）の情報が必要。行を追加することで他の情報も付与可能。例えば、配列そのものを保持することなくある配列がマッピングされたゲノム上の領域を表すのに使えるので、bamを扱うより便利なことがある。Bedtoolsで操作可能。簡単な操作はテキストエディタや、`sed`や`awk`などで扱うと便利。<br>
 ```
