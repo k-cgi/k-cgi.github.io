@@ -4,12 +4,46 @@
 DNAやアミノ酸の配列を扱う際の基本的な形式。サンプル名と配列情報のみからなる。>と改行に挟まれた最短の文字列がサンプル名、サンプル名の後の改行と改行+>で挟まれた最短の文字列が配列になる。サンプル名に記号が使用可能だが、解析に使うソフトとの兼ね合いで英数字と-（ハイフン）と\_（アンダーバー）のみにした方が良い。<br>
 ```
 >Sample_1_samplename
-ATCGMWSYKHBDVNATCG
+ATCGMWSYKHBDVN--ATCG
 ATCGGCCATCAA
 >sample_2_protein
-CKNJJATCAWQR*
+CKNJJATCA-WQR*
 ```
 MEGA等で開けるが、簡単な確認ならテキストエディタで十分。
+## .nexsus (.nex)
+DNAやアミノ酸の配列を扱う際の形式。.fastaより多くの情報を付与できる。ファイル先頭に#NEXUS、beginで始まりendで終わる多数のブロックで構成される。最低でもtaxaとcharactersブロックが必要。BEASTやMrBaiseといった系統解析ソフトで必須のファイル形式。
+
+```
+#NEXUS
+[ Title ]
+begin taxa;
+       dimensions ntax=2;
+       taxlabels
+             Sequence 1
+             Sequence 2
+;
+end;
+begin characters;
+       dimensions nchar=6;
+       format missing=? gap=- matchchar=. datatype=nucleotide;
+       matrix
+
+Sequence_1
+ATCGAA--
+Sequence_2
+CGATTA
+
+;
+end;
+```
+MEGA等で開けるが、対応していないブロックがあるのでテキストエディタで編集したほうが便利。
+## .tree (.t, .tre), .nwk
+系統樹をNewikフォーマットで記述したファイル。ノードの後に:枝長、[]内部にノードの情報（BS、事後確率等）を付加可能。
+```
+((A:1,B:1.2):0.2[100],C:2.4)
+```
+MEGA等で開けるが、テキストエディタで編集することもできる。
+
 ## .ab1
 サンガーシーケンサから出力される、蛍光の強度と塩基データを含むファイル。サンガ―シーケンスはこれを見ながら結果の解釈をする。<br>
 MEGA、Gene Studio等で開ける。
