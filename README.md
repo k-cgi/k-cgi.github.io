@@ -27,3 +27,4 @@
 ## その他
 1. [RパッケージRvestを用いたwebスクレイピング](docs/scraping_r.md)
 1. [pythonを用いたwebスクレイピング](docs/scraping_python.md)
+2. [VBAでExcelにfastaファイルを読み込む](
