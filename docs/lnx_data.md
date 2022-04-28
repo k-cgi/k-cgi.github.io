@@ -31,5 +31,8 @@ AT1G312531  GO:00183941 3816
 ```
 **例：2番目のファイルのみに含まれる遺伝子の一覧を取得**
 ```
-comm -13 <(awk '{print $1}' File1 | sort) <(awk '{print $1}' File2 | sort) | uniq > OUT.txt #File2にのみ含まれる遺伝子名が重複を除いた状態でOUT.txtに出力される。
+comm -13 <(awk '{print $1}' File1 | sort) <(awk '{print $1}' File2 | sort) | uniq > OUT.txt
 ```
+File2にのみ含まれる遺伝子名が重複を除いた状態でOUT.txtに出力される。
+**例：両方のファイルに含まれる遺伝子のうち、発現量が100以上の遺伝子の一覧を取得**
+**例：ファイル1のうち、GOタームのリスト（GO_list.txt）に含まれるGOをもつ遺伝子の一覧を取得**
