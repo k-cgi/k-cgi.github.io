@@ -38,10 +38,9 @@ File2にのみ含まれる遺伝子名が重複を除いた状態でOUT.txtに�
 ```
 comm -12 <(awk '(if $3>100){print $1}' File1 | sort) <(awk '{print $1}' File2 | sort) | uniq > OUT.txt
 ```
-<br>
+File2にのみ含まれる遺伝子名が重複を除いた状態でOUT.txtに出力される。<br>
 **例：ファイル1のうち、GOタームのリスト（GO_list.txt）に含まれるGOをもつ遺伝子の一覧を取得**
-
 ```
 comm -13 <(awk '(if){print $1}' File1 | sort) <(awk '{print $1}' File2 | sort) | uniq > OUT.txt
 ```
-<br>
+File2にのみ含まれる遺伝子名が重複を除いた状態でOUT.txtに出力される。<br>
