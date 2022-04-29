@@ -2,10 +2,11 @@
 今までやった解析等の備忘録です。一部研究室用に作成したものを含む。
 <br>
 ## Linux関連
-1. [Linuxの基本的な扱い方（遺伝研スパコンの使い方）](docs/lnx.md)
-1. [Linuxで文字列操作](docs/lnx_string.md)
-1. [Linuxでデータ整形](docs/lnx_data.md)
-1. [WSL2でGPGPU](docs/gpgpu.md)
+1. [Linuxの基本的な扱い方](docs/lnx.md)
+2. [遺伝研スパコンの使い方](docs/supakon.md)
+3. [Linuxで文字列操作](docs/lnx_string.md)
+4. [Linuxでデータ整形](docs/lnx_data.md)
+5. [WSL2でGPGPU](docs/gpgpu.md)
 
 ## ゲノム・遺伝子関連
 1. [Nanopore関連のTips](docs/nanopore_tips.md)
