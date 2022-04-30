@@ -13,8 +13,8 @@
 ```
 awk '(if $1==0){print $1 "," $2}' INPUT.txt > OUTPUT.txt
 awk '{print $4 "," $2}' INPUT.txt > OUTPUT.txt
-awk -F "," '{a += $1} END {print a}'
-awk '(if $1 < 100 ){a += $1; print $2} END {print "SUM=" a}'
+cat INPUT.txt | awk -F "," '{a += $1} END {print a}' > OUTPUT.txt
+cat INPUT.txt | awk '(if $1 < 100 ){a += $1; print $2} END {print "SUM=" a}' > OUTPUT.txt
 ```
 ### sort
 ファイルを行ごとにで並べ替えるコマンド。複数列からなるファイルの場合は、ある列を基準に並び替えたりもできる。
