@@ -22,8 +22,8 @@
 1. [DNAの抽出関連のTips](docs/dna_tips.md)
 1. [PCR関連のTips](docs/pcr_tips.md)
 1. [系統樹の書き方（NJ法、ML法、Base法）](docs/trees.md)
-1. [PACo（系統樹間の不一致検出）](docs/paco.md)
-1. [祖先形質推定](docs/ancestor.md)
+1. [Rを利用したPACo（系統樹間の不一致検出）](docs/paco.md)
+1. [RパッケージPhyToolsを利用した祖先形質推定](docs/ancestor.md)
 
 ## その他
 1. [RパッケージRvestを用いたwebスクレイピング](docs/scraping_r.md)
