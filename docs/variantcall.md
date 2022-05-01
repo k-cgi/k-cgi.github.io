@@ -53,7 +53,7 @@ singularity run -B /usr/lib/locale/:/usr/lib/locale/ \
   --reads="${INPUT_DIR}"/"${INPUT_BAM}" \
   --output_vcf="${OUTPUT_DIR}"/"${OUTPUT_NAME}".vcf.gz \
   --output_gvcf="${OUTPUT_DIR}"/"${OUTPUT_NAME}".g.vcf.gz \
-  --intermediate_results_dir "${OUTPUT_DIR}/intermediate_results_dir" \ **Optional.
+  --intermediate_results_dir "${OUTPUT_DIR}/intermediate_results_dir" \
   --num_shards="${CPU_NUM}" \
 ```
 
