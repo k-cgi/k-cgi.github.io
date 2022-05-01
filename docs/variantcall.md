@@ -34,6 +34,7 @@ samtools index INPUT.sorted #baiファイル出力
 
 ### 実行
 ```
+#入力などの設定
 BIN_VERSION="1.3.0"
 TYPE="WGS" #[WGS,WES,PACBIO,HYBRID_PACBIO_ILLUMINA]のいずれかを指定
 INPUT_DIR="INPUT_DIR"
@@ -42,6 +43,8 @@ INPUT_BAM="INPUT.bam"
 OUTPUT_DIR="OUTPUT_DIR"
 OUTPUT_NAME="OUTPUT"
 CPU_NUM="CPU_NUM"　#使うコア数を指定。多ければいいというものではないっぽい
+
+#以下で実行。他のオプションもあり。
 singularity run -B /usr/lib/locale/:/usr/lib/locale/ \
   docker://google/deepvariant:"${BIN_VERSION}" \
   /opt/deepvariant/bin/run_deepvariant \
