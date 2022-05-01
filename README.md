@@ -5,8 +5,7 @@
 ## Linux関連
 1. [Linuxの基本的な扱い方](docs/lnx.md)
 2. [遺伝研スパコンの使い方](docs/supakon.md)
-3. [Linuxで文字列操作](docs/lnx_string.md)
-4. [Linuxでデータ整形](docs/lnx_data.md)
+4. [Linuxでデータ整形・文字列操作](docs/lnx_data.md)
 5. [WSL2でGPGPU](docs/gpgpu.md)
 
 ## ゲノム・遺伝子関連
