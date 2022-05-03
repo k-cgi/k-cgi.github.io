@@ -96,7 +96,7 @@ for (i in 1:page_num){
 			gen <- html_tab[[1]]$X2[1]
 			epi <- html_tab[[1]]$X2[2]
 			syn <- html_tab[[1]]$X2[3]
-			if (syn =="This is not a synonym"){		
+			if (syn =="This is not a synonym"){	###シノニムの有無によって書いてある内容が異なるので例外処理が必要。	
 				if (length(html_tab[[1]]$X2)==8){		###本当はシノニムであるとき(登録ミス)
 					syn_name <-  paste(html_tab[[1]]$X2[4],html_tab[[1]]$X2[5])
 					reg_name <- html_tab[[1]]$X2[6]
