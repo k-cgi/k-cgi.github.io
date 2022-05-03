@@ -7,9 +7,9 @@ seed_grex <- ""
 poll_gen <- "cymbidium"
 poll_grex <- ""
 
-output_file <- "./RNA/cym/cym_hibrid_list_2.csv"
+output_file <- "./cym_hibrid_list.csv"
 
-
+###æ¤œç´¢ç”»é¢ã®URLã®ä½œæˆ
 if (seed_gen!=""){
 seed_gen <- paste("&seedgen=",seed_gen,sep="")
 }
@@ -33,11 +33,11 @@ html_1=read_html(paste("https://apps.rhs.org.uk/horticulturaldatabase/orchidregi
 row_names <- matrix(c("Gen","Epi","Registrant_Name","Orginator_Name","Date_of_Registration","Seed_gen","Seed_grex","Poll_gen","Poll_grex","Synonym Name"),nrow=1,ncol=10)
 
 
-####ƒy[ƒW”‚ğ’Šo
+####ãƒšãƒ¼ã‚¸æ•°ã‚’æŠ½å‡º
 page_num <- html_text(html_nodes(html_1,"h3"))
 page_num <- as.integer(sub("Page 1 of ","",page_num[1]))
 
-###ŒfÚí”‚ğ’Šo
+###æ²è¼‰ç¨®æ•°ã‚’æŠ½å‡º è¤‡æ•°å½¢ã¨å˜æ•°å½¢ã§é•ã†ã®ã§æ³¨æ„
 epi_num <- html_text(html_nodes(html_1,"h2")) 
 epi_num <- epi_num[1]
 epi_num <- sub("There","",epi_num)
@@ -48,13 +48,13 @@ epi_num <- sub(" hit","",epi_num)
 epi_num <- as.integer(substr(epi_num,3,nchar(epi_num)))
 
 
-last_num <- epi_num%%20 ###ÅIƒy[ƒW‚ÌŒfÚí”
+last_num <- epi_num%%20 ###æœ€çµ‚ãƒšãƒ¼ã‚¸ã®æ²è¼‰ç¨®æ•°
 if (last_num == 0){
 	last_num =20
 }
 
 
-#####page_num=1@###ÄŠJ—p
+#####page_num=1ã€€###é€”ä¸­ã®ãƒšãƒ¼ã‚¸ã‹ã‚‰æŠ½å‡ºã™ã‚‹å ´åˆã¯ãƒšãƒ¼ã‚¸æ•°ã‚’æŒ‡å®šã—ã¦ãŠã
 
 write.table(row_names, output_file, quote=F,col.names=F,row.names=F, append=T, sep=",")
 all_data<- NULL
@@ -63,11 +63,11 @@ for (i in 1:page_num){
 	html_all=read_html(paste("https://apps.rhs.org.uk/horticulturaldatabase/orchidregister/parentageresults.asp?page=", i, serch_str,sep=""))
 	
 		if (i==page_num){	
-			sp_num=last_num ###ÅIƒy[ƒW‚Ìê‡
+			sp_num=last_num ###æœ€çµ‚ãƒšãƒ¼ã‚¸ã®å ´åˆ
 		} else{
 			sp_num=20
 		}
-		####ID‚ğ’Šo
+		####IDã‚’æŠ½å‡º
 		ID_url <- html_all %>% html_nodes(xpath="//a") %>% html_attr("href")
 		if (page_num==1){
 			ID_url <- head(ID_url, n=last_num)
@@ -77,44 +77,44 @@ for (i in 1:page_num){
 			ID_url <- head(ID_url, n=sp_num+page_num)
 			ID_url <- tail(ID_url, n=sp_num)
 			"B"
-		}else{						###Å‰‚ÆÅŒãˆÈŠO‚ÍƒŠƒ“ƒN‚ª‚P‚Â‘½‚¢(Next page‚Ìƒ{ƒ^ƒ“)
+		}else{						###æœ€åˆã¨æœ€å¾Œä»¥å¤–ã¯ãƒªãƒ³ã‚¯ãŒï¼‘ã¤å¤šã„(Next pageã®ãƒœã‚¿ãƒ³)
 			ID_url <- head(ID_url, n=sp_num+page_num+1)	
 			ID_url <- tail(ID_url, n=sp_num)
 			"C"
 		}
 
 
-		for (j in 1:sp_num){  ###Šeƒy[ƒW‚ÉÚ‚Á‚Ä‚éƒf[ƒ^‚ğæ“¾
+		for (j in 1:sp_num){  ###å„ãƒšãƒ¼ã‚¸ã«è¼‰ã£ã¦ã‚‹ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
 
-			###í‚²‚Æ‚Ìƒf[ƒ^‚ ‚Â‚ß
+			###ç¨®ã”ã¨ã®ãƒ‡ãƒ¼ã‚¿ã‚ã¤ã‚
 			html_ID=read_html(paste("https://apps.rhs.org.uk/horticulturaldatabase/orchidregister/", ID_url[j],sep=""))
 			html_tab<- html_table(html_ID)
 			ID_url[j]
-			####ƒVƒmƒjƒ€‚©‚Ç‚¤‚©Šm”F
+			####ã‚·ãƒãƒ‹ãƒ ã‹ã©ã†ã‹ç¢ºèª
 
-			##Œğ”zí–¼ gen=‘®–¼ epi=Œğ”z–¼ reg_name “o˜^Ò org_name Œğ”zÒ DOR “o˜^“ú
+			##äº¤é…ç¨®å gen=å±å epi=äº¤é…å reg_name ç™»éŒ²è€… org_name äº¤é…è€… DOR ç™»éŒ²æ—¥
 			gen <- html_tab[[1]]$X2[1]
 			epi <- html_tab[[1]]$X2[2]
 			syn <- html_tab[[1]]$X2[3]
 			if (syn =="This is not a synonym"){		
-				if (length(html_tab[[1]]$X2)==8){		###–{“–‚ÍƒVƒmƒjƒ€‚Å‚ ‚é‚Æ‚«(“o˜^ƒ~ƒX)
+				if (length(html_tab[[1]]$X2)==8){		###æœ¬å½“ã¯ã‚·ãƒãƒ‹ãƒ ã§ã‚ã‚‹ã¨ã(ç™»éŒ²ãƒŸã‚¹)
 					syn_name <-  paste(html_tab[[1]]$X2[4],html_tab[[1]]$X2[5])
 					reg_name <- html_tab[[1]]$X2[6]
 					org_name <- html_tab[[1]]$X2[7]
 					DOR <- html_tab[[1]]$X2[8]
-				} else{						###ƒVƒmƒjƒ€‚¶‚á‚È‚¢‚Æ‚«(^)
+				} else{						###ã‚·ãƒãƒ‹ãƒ ã˜ã‚ƒãªã„ã¨ã(çœŸ)
 					syn_name <- ""
 					reg_name <- html_tab[[1]]$X2[4]
 					org_name <- html_tab[[1]]$X2[5]
 					DOR <- html_tab[[1]]$X2[6]
 				}
 			} else{
-				if (length(html_tab[[1]]$X2)==8){		###ƒVƒmƒjƒ€–¼‚ª“o˜^‚³‚ê‚Ä‚ ‚é‚Æ‚«
+				if (length(html_tab[[1]]$X2)==8){		###ã‚·ãƒãƒ‹ãƒ åãŒç™»éŒ²ã•ã‚Œã¦ã‚ã‚‹ã¨ã
 					syn_name <-  paste(html_tab[[1]]$X2[4],html_tab[[1]]$X2[5])
 					reg_name <- html_tab[[1]]$X2[6]
 					org_name <- html_tab[[1]]$X2[7]
 					DOR <- html_tab[[1]]$X2[8]
-				} else{						###ƒVƒmƒjƒ€–¼‚ª“o˜^‚³‚ê‚Ä‚È‚¢‚Æ‚«
+				} else{						###ã‚·ãƒãƒ‹ãƒ åãŒç™»éŒ²ã•ã‚Œã¦ãªã„ã¨ã
 					syn_name <- "Synonym"
 					reg_name <- html_tab[[1]]$X2[4]
 					org_name <- html_tab[[1]]$X2[5]
@@ -122,7 +122,7 @@ for (i in 1:page_num){
 				}
 			}
 
-			##—¼eî•ñ seedgeníqe‘®–¼ seedeiíqeŒğ”z–¼ polgen‰Ô•²e‘®–¼ polepi‰Ô•²eŒğ”z–¼
+			##ä¸¡è¦ªæƒ…å ± seedgenç¨®å­è¦ªå±å seedeiç¨®å­è¦ªäº¤é…å polgenèŠ±ç²‰è¦ªå±å polepièŠ±ç²‰è¦ªäº¤é…å
 			seedgen <- html_tab[[2]]$"Seed parent"[1]
 			seedepi <- html_tab[[2]]$"Seed parent"[2]
 
@@ -132,13 +132,10 @@ for (i in 1:page_num){
 			all_data<- rbind(all_data,c(gen,epi,reg_name,org_name,DOR,seedgen,seedepi,polgen,polepi,syn_name))
 			Sys.sleep(1)
 		}
-Sys.sleep(2)
+Sys.sleep(2)	#ã‚µãƒ¼ãƒãƒ¼ã«è² è·ã‚’ã‹ã‘ãªã„
 write.table(all_data, output_file, quote=F,col.names=F,row.names=F, append=T, sep=",")
 all_data <-NULL
 }
 
 all_data <-NULL
 ###############END################
-
-
-####../../RNA/cym/cym_hibrid_list.csv
