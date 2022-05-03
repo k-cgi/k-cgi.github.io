@@ -130,7 +130,7 @@ for (i in 1:page_num){
 			polepi <- html_tab[[2]]$"Pollen parent"[2]
 
 			all_data<- rbind(all_data,c(gen,epi,reg_name,org_name,DOR,seedgen,seedepi,polgen,polepi,syn_name))
-			Sys.sleep(1)
+			Sys.sleep(2)
 		}
 Sys.sleep(2)	#サーバーに負荷をかけない
 write.table(all_data, output_file, quote=F,col.names=F,row.names=F, append=T, sep=",")
