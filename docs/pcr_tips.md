@@ -26,7 +26,7 @@ PCRの目標となる領域が決まったら、まずは先行研究で利用�
 | MightyAmp DNA Polymerase v.3 | 0.4µL|
 | MilliQ （または精製水）|8µL|
 |Sample|1µL|
-
+＊Buffer 15μL, MilliQ 13μL, MightyAmp & Primer 各0.3μL, サンプル 1μL(計約30μL)でも増える。
 4. 3.で調整したチューブをサーマルサイクラーにセットし、以下のプログラムでサーマルサイクラーを実行する。Tm値はプライマーごとに異なるため、プライマー購入時に付属している紙を参照すること。
 
 （PCRプログラム）
@@ -106,7 +106,7 @@ http://www.chiyoda-s.jp/wp-content/uploads/2016/02/FAGCK-000_0116_T.pdf
 特に近縁種の配列から設計されたプライマーを使っている場合、ポリメラーゼを変える。<br>
 MightyAmp V.3を使っている場合、付属のAdditive for High Specificityを2μL添加し、その分MilliQを2μL減らす。阻害物質（色素や多糖など）が多いサンプルでもPCRが成功する。<br>
 MightyPrepで抽出したトビケラのサンプルはこれを加えないと増えない。
-＊Buffer 15μL, MilliQ 13μL, MightyAmp & Primer 各0.3μL, サンプル 1μL(計約30μL)でも増える。
+
 ### プライマーを見直す
 特異的なプライマーを設計する。もしくはより短い領域を増やすプライマーを設計する。
 ### サンプルの質を見直す
