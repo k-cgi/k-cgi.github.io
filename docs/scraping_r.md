@@ -19,5 +19,5 @@ tidyverse、stringrなどのライブラリも併用すると便利（ここで�
 `html_attr("NODE")`等の形で使用。指定したノード等からテキストを取得するコマンド。例えば`html_nodes("a") %>% html_attr("href")`でaに含まれるhrefを取り出せる。
 
 ## 例
-ラン科の交配情報のデータベース（ https://apps.rhs.org.uk/horticulturaldatabase/orchidregister/orchidregister.asp ）にアクセスして、Cymbidium属同士の交配種の一覧を取得する。
-(参考コード)[codes/rvest_test.R]
+[ラン科の交配情報のデータベース](https://apps.rhs.org.uk/horticulturaldatabase/orchidregister/orchidregister.asp)にアクセスして、Cymbidium属同士の交配種の一覧を取得する。<br>
+[参考コード](https://github.com/k-cgi/k-cgi.github.io/blob/main/codes/rvest_test.R)
