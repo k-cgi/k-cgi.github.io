@@ -1,11 +1,11 @@
 
 library(rvest)
 
-seed_gen <- "cymbidium"
-seed_grex <- ""
+seed_gen <- "cymbidium" #種子親の属
+seed_grex <- "" #種子親の種または交配名
 
-poll_gen <- "cymbidium"
-poll_grex <- ""
+poll_gen <- "cymbidium" #花粉親の属
+poll_grex <- "" #花粉親の種または交配名
 
 output_file <- "./cym_hibrid_list.csv"
 
@@ -67,20 +67,17 @@ for (i in 1:page_num){
 		} else{
 			sp_num=20
 		}
-		####IDを抽出
+		####IDのurlを抽出
 		ID_url <- html_all %>% html_nodes(xpath="//a") %>% html_attr("href")
 		if (page_num==1){
 			ID_url <- head(ID_url, n=last_num)
 			ID_url <- tail(ID_url, n=last_num)
-			"a"
 		}else if (i==1||i==page_num){			
 			ID_url <- head(ID_url, n=sp_num+page_num)
 			ID_url <- tail(ID_url, n=sp_num)
-			"B"
 		}else{						###最初と最後以外はリンクが１つ多い(Next pageのボタン)
 			ID_url <- head(ID_url, n=sp_num+page_num+1)	
 			ID_url <- tail(ID_url, n=sp_num)
-			"C"
 		}
 
 
