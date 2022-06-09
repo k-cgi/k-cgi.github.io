@@ -62,7 +62,7 @@ ls --help #lsコマンドのヘルプを表示
 ```
 FILES="home/dir/dir2/nanka/mokuteki.txt"
 ```
-と定義しておくと、以降\\$FILES、${FILES}という文字列は"home/dir/dir2/nanka/mokuteki.txt"と同じものとして扱われる（それぞれ扱いが微妙に異なる）。<br>
+と定義しておくと、以降\$FILES、${FILES}という文字列は"home/dir/dir2/nanka/mokuteki.txt"と同じものとして扱われる（それぞれ扱いが微妙に異なる）。<br>
 コマンドの出力結果を変数に収めたい場合は、\`（グレイヴ・アクセント、Shift+@で出るやつ）でコマンドを囲ったものを代入する。例えば、
 ```
 FILE_LIST=`ls *.fasta`
